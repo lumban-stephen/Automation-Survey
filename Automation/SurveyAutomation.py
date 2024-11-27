@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+from selenium.common import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,10 +19,18 @@ wait_driver = initialize_wait_drive_feed(driver)  # Pass the driver to the wait 
 driver.get("https://docs.google.com/forms/d/e/1FAIpQLScGuzmmOU0BjpZv9AVblmmOVnBCQz5WqMracmAhdOQkZVHqlg/viewform")
 driver.maximize_window()
 
+import random
+
+def generate_grades():
+    # Generate three random float numbers between 1.0 and 2.8
+    randGrades = [round(random.uniform(1.0, 2.8), 1) for _ in range(3)]
+    # Join them into a space-separated string
+    return " ".join(map(str, randGrades))
+
 # Use explicit waits for each interaction
 try:
     try:
-        time.sleep(3)
+        time.sleep(0.5)
         locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[1]")
         next = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, next)
@@ -31,11 +40,11 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
     # Year
     try:
-        # 4th year
-        locator = (By.XPATH, "(//div[@class='AB7Lab Id5V1'])[4]")
+        # 3rd year
+        locator = (By.XPATH, "//div[@id='i12']//div[@class='AB7Lab Id5V1']")
         year = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, year)
         year.click()
@@ -44,12 +53,12 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # Department
     try:
-        # CCS
-        locator = (By.XPATH, "(//div[@class='AB7Lab Id5V1'])[5]")
+        # teacher ed
+        locator = (By.XPATH, "//div[@id='i44']//div[@class='AB7Lab Id5V1']")
         department = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, department)
         department.click()
@@ -58,12 +67,12 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # Gender
     try:
-        # Male
-        locator = (By.XPATH, "(//div[@class='AB7Lab Id5V1'])[16]")
+        # Female
+        locator = (By.XPATH, "//div[@id='i58']//div[@class='AB7Lab Id5V1']")
         gender = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, gender)
         gender.click()
@@ -72,7 +81,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(1)
 
     # next button
     try:
@@ -85,7 +94,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # mother employment
     try:
@@ -99,7 +108,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # father employment
     try:
@@ -113,7 +122,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # Marital Status
     try:
@@ -127,7 +136,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # next
     try:
@@ -140,7 +149,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
 
     # Clicks the dropdown
     try:
@@ -191,30 +200,30 @@ try:
         goals = wait_driver.until(EC.visibility_of_element_located(locator))
         goals.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//span[normalize-space()='Family'])[1]")
         fam = wait_driver.until(EC.visibility_of_element_located(locator))
         fam.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//span[normalize-space()='Improve financial circumstances'])[1]")
         financial = wait_driver.until(EC.visibility_of_element_located(locator))
         financial.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
-        locator = (By.XPATH, "(//span[normalize-space()='Romantic Relationships'])[1]")
-        rel = wait_driver.until(EC.visibility_of_element_located(locator))
-        scroll_to_element(driver, rel)
-        rel.click()
+        # locator = (By.XPATH, "(//span[normalize-space()='Romantic Relationships'])[1]")
+        # rel = wait_driver.until(EC.visibility_of_element_located(locator))
+        # scroll_to_element(driver, rel)
+        # rel.click()
+        #
+        # time.sleep(0.5)
 
-        time.sleep(3)
-
-        locator = (By.XPATH, "(//span[normalize-space()='Personal Development'])[1]")
-        personal = wait_driver.until(EC.visibility_of_element_located(locator))
-        personal.click()
+        # locator = (By.XPATH, "(//span[normalize-space()='Personal Development'])[1]")
+        # personal = wait_driver.until(EC.visibility_of_element_located(locator))
+        # personal.click()
     except TimeoutException as e:
         print("Host Create from did not show on time", e)
     except ElementClickInterceptedException as e:
@@ -228,18 +237,18 @@ try:
         visual = wait_driver.until(EC.visibility_of_element_located(locator))
         visual.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//div[@class='uHMk6b fsHoPb'])[8]")
         auditory = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, auditory)
         auditory.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
-        locator = (By.XPATH, "(//div[@class='uHMk6b fsHoPb'])[9]")
-        kinesthetic = wait_driver.until(EC.visibility_of_element_located(locator))
-        kinesthetic.click()
+        # locator = (By.XPATH, "(//div[@class='uHMk6b fsHoPb'])[9]")
+        # kinesthetic = wait_driver.until(EC.visibility_of_element_located(locator))
+        # kinesthetic.click()
     except TimeoutException as e:
         print("Host Create from did not show on time", e)
     except ElementClickInterceptedException as e:
@@ -251,20 +260,21 @@ try:
         locator = (By.XPATH, "(//input[@class='whsOnd zHQkBf'])[1]")
         grades = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, grades)
-        grades.send_keys("1.8 1.2 1.7")
+        grades_string = generate_grades()
+        grades.send_keys(grades_string)
     except TimeoutException as e:
         print("Host Create from did not show on time", e)
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
     try:
         # pass
         locator = (By.XPATH, "(//div[@role='option'])[1]")
         status = wait_driver.until(EC.visibility_of_element_located(locator))
         status.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//div[@role='option'])[2]")
         passed = wait_driver.until(EC.visibility_of_element_located(locator))
@@ -274,14 +284,14 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(3)
+    time.sleep(0.5)
     try:
         # pass
         locator = (By.XPATH, "(//div[@role='option'])[4]")
         status = wait_driver.until(EC.visibility_of_element_located(locator))
         status.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//div[@role='option'])[5]")
         passed = wait_driver.until(EC.visibility_of_element_located(locator))
@@ -298,7 +308,7 @@ try:
         status = wait_driver.until(EC.visibility_of_element_located(locator))
         status.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//div[@role='option'])[8]")
         passed = wait_driver.until(EC.visibility_of_element_located(locator))
@@ -334,7 +344,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(5)
+    time.sleep(0.5)
     # Time Studying
     try:
         # yes
@@ -382,7 +392,7 @@ try:
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(4)
+    time.sleep(0.5)
     # aid or tools
     try:
         # Yes
@@ -466,23 +476,23 @@ try:
         yt = wait_driver.until(EC.visibility_of_element_located(locator))
         yt.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//span[normalize-space()='ChatGPT or other AI assistants'])[1]")
         gpt = wait_driver.until(EC.visibility_of_element_located(locator))
         gpt.click()
 
-        time.sleep(3)
+        time.sleep(0.5)
 
         locator = (By.XPATH, "(//span[normalize-space()='Learning Management Systems (LMS)'])[1]")
         lms = wait_driver.until(EC.visibility_of_element_located(locator))
         lms.click()
 
-        # time.sleep(3)
-        #
-        # locator = (By.XPATH, "(//span[contains(text(),'Note-taking Applications (e.g: Evernote, OneNote, ')])[1]")
-        # note = wait_driver.until(EC.visibility_of_element_located(locator))
-        # note.click()
+        time.sleep(0.5)
+
+        locator = (By.XPATH, "(//span[contains(text(),'Note-taking Applications (e.g: Evernote, OneNote, ')])[1]")
+        note = wait_driver.until(EC.visibility_of_element_located(locator))
+        note.click()
     except TimeoutException as e:
         print("Host Create from did not show on time", e)
     except ElementClickInterceptedException as e:
@@ -516,6 +526,6 @@ except TimeoutException as e:
 except ElementClickInterceptedException as e:
     print("Can't click on Host elements", e)
 
-time.sleep(3)
+time.sleep(0.5)
 driver.quit()
 
