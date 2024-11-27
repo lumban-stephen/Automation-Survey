@@ -24,3 +24,4 @@ locator = "(//div[@class='AB7Lab Id5V1'])[16]"
 driver.find_element(By.XPATH, locator)
 
 time.sleep(10)
+
