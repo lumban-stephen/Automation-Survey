@@ -63,7 +63,7 @@ try:
     # Department
     try:
         # teacher ed
-        locator = (By.XPATH, "//div[@id='i47']//div[@class='AB7Lab Id5V1']")
+        locator = (By.XPATH, "//div[@id='i38']//div[@class='AB7Lab Id5V1']")
         department = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, department)
         department.click()

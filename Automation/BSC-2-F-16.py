@@ -48,8 +48,7 @@ try:
     time.sleep(0.5)
     # Year
     try:
-        # 3rd year
-        locator = (By.XPATH, "//div[@id='i12']//div[@class='AB7Lab Id5V1']")
+        locator = (By.XPATH, "//div[@id='i9']//div[@class='AB7Lab Id5V1']")
         year = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, year)
         year.click()
@@ -63,7 +62,7 @@ try:
     # Department
     try:
         # teacher ed
-        locator = (By.XPATH, "//div[@id='i47']//div[@class='AB7Lab Id5V1']")
+        locator = (By.XPATH, "//div[@id='i38']//div[@class='AB7Lab Id5V1']")
         department = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, department)
         department.click()

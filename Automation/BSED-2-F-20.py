@@ -48,8 +48,8 @@ try:
     time.sleep(0.5)
     # Year
     try:
-        # 3rd year
-        locator = (By.XPATH, "//div[@id='i12']//div[@class='AB7Lab Id5V1']")
+        # 2nd year
+        locator = (By.XPATH, "//div[@id='i9']//div[@class='AB7Lab Id5V1']")
         year = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, year)
         year.click()
@@ -517,14 +517,14 @@ try:
 
     # time.sleep(4)
     # Submit
-    # try:
-    #     locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
-    #     submit = wait_driver.until(EC.visibility_of_element_located(locator))
-    #     submit.click()
-    # except TimeoutException as e:
-    #     print("Host Create from did not show on time", e)
-    # except ElementClickInterceptedException as e:
-    #     print("Can't click on Host elements", e)
+    try:
+        locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
+        submit = wait_driver.until(EC.visibility_of_element_located(locator))
+        submit.click()
+    except TimeoutException as e:
+        print("Host Create from did not show on time", e)
+    except ElementClickInterceptedException as e:
+        print("Can't click on Host elements", e)
 
 except TimeoutException as e:
     print("Host Create from did not show on time", e)

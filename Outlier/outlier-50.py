@@ -47,46 +47,76 @@ try:
 
     time.sleep(0.5)
     # Year
+    year_xpaths = [
+        "//div[@id='i9']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i12']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i15']//div[@class='AB7Lab Id5V1']"
+    ]
+
     try:
-        # 3rd year
-        locator = (By.XPATH, "//div[@id='i12']//div[@class='AB7Lab Id5V1']")
+        # Randomly select an XPath
+        selected_xpath = random.choice(year_xpaths)
+        print(f"Selected XPath: {selected_xpath}")  # Debugging to see which XPath was chosen
+
+        # Locate the element
+        locator = (By.XPATH, selected_xpath)
         year = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, year)
         year.click()
     except TimeoutException as e:
-        print("Host Create from did not show on time", e)
+        print("Host Create form did not show on time", e)
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
     time.sleep(0.5)
 
-    # Department
+    department_xpaths = [
+        "//div[@id='i26']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i29']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i35']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i38']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i41']//div[@class='AB7Lab Id5V1']"
+    ]
+    # Department selection
     try:
-        # teacher ed
-        locator = (By.XPATH, "//div[@id='i47']//div[@class='AB7Lab Id5V1']")
+        # Randomly select an XPath
+        selected_xpath = random.choice(department_xpaths)
+        print(f"Selected XPath: {selected_xpath}")  # Debugging to see which XPath was chosen
+
+        # Locate the element
+        locator = (By.XPATH, selected_xpath)
         department = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, department)
         department.click()
     except TimeoutException as e:
-        print("Host Create from did not show on time", e)
+        print("Host Create form did not show on time", e)
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
     time.sleep(0.5)
 
+    gender_xpaths = [
+        "//div[@id='i58']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i61']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i64']//div[@class='AB7Lab Id5V1']"
+    ]
     # Gender
     try:
-        # Male
-        locator = (By.XPATH, "//div[@id='i61']//div[@class='AB7Lab Id5V1']")
+        # Randomly select an XPath
+        selected_xpath = random.choice(gender_xpaths)
+        print(f"Selected XPath: {selected_xpath}")  # Debugging to show the chosen XPath
+
+        # Locate the element
+        locator = (By.XPATH, selected_xpath)
         gender = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, gender)
         gender.click()
     except TimeoutException as e:
-        print("Host Create from did not show on time", e)
+        print("Host Create form did not show on time", e)
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
-    time.sleep(1)
+    time.sleep(0.5)
 
     # next button
     try:
@@ -129,15 +159,23 @@ try:
 
     time.sleep(0.5)
 
-    # Marital Status
+    status_xpaths = [
+        "//div[@id='i31']//div[@class='AB7Lab Id5V1']",
+        "//div[@id='i37']//div[@class='AB7Lab Id5V1']"
+    ]
+    # Marital Status selection
     try:
-        # Married
-        locator = (By.XPATH, "(//div[@class='AB7Lab Id5V1'])[5]")
+        # Randomly select an XPath
+        selected_xpath = random.choice(status_xpaths)
+        print(f"Selected XPath: {selected_xpath}")  # Debugging to show the chosen XPath
+
+        # Locate the element
+        locator = (By.XPATH, selected_xpath)
         status = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, status)
         status.click()
     except TimeoutException as e:
-        print("Host Create from did not show on time", e)
+        print("Host Create form did not show on time", e)
     except ElementClickInterceptedException as e:
         print("Can't click on Host elements", e)
 
@@ -201,9 +239,9 @@ try:
     time.sleep(5)
     try:
         # This selects all except others
-        locator = (By.XPATH, "(//span[normalize-space()='Future goals'])[1]")
-        goals = wait_driver.until(EC.visibility_of_element_located(locator))
-        goals.click()
+        # locator = (By.XPATH, "(//span[normalize-space()='Future goals'])[1]")
+        # goals = wait_driver.until(EC.visibility_of_element_located(locator))
+        # goals.click()
 
         time.sleep(0.5)
 
@@ -219,16 +257,16 @@ try:
 
         time.sleep(0.5)
 
-        # locator = (By.XPATH, "(//span[normalize-space()='Romantic Relationships'])[1]")
-        # rel = wait_driver.until(EC.visibility_of_element_located(locator))
-        # scroll_to_element(driver, rel)
-        # rel.click()
-        #
-        # time.sleep(0.5)
+        locator = (By.XPATH, "(//span[normalize-space()='Romantic Relationships'])[1]")
+        rel = wait_driver.until(EC.visibility_of_element_located(locator))
+        scroll_to_element(driver, rel)
+        rel.click()
 
-        # locator = (By.XPATH, "(//span[normalize-space()='Personal Development'])[1]")
-        # personal = wait_driver.until(EC.visibility_of_element_located(locator))
-        # personal.click()
+        time.sleep(0.5)
+
+        locator = (By.XPATH, "(//span[normalize-space()='Personal Development'])[1]")
+        personal = wait_driver.until(EC.visibility_of_element_located(locator))
+        personal.click()
     except TimeoutException as e:
         print("Host Create from did not show on time", e)
     except ElementClickInterceptedException as e:

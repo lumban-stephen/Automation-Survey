@@ -517,14 +517,14 @@ try:
 
     # time.sleep(4)
     # Submit
-    # try:
-    #     locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
-    #     submit = wait_driver.until(EC.visibility_of_element_located(locator))
-    #     submit.click()
-    # except TimeoutException as e:
-    #     print("Host Create from did not show on time", e)
-    # except ElementClickInterceptedException as e:
-    #     print("Can't click on Host elements", e)
+    try:
+        locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
+        submit = wait_driver.until(EC.visibility_of_element_located(locator))
+        submit.click()
+    except TimeoutException as e:
+        print("Host Create from did not show on time", e)
+    except ElementClickInterceptedException as e:
+        print("Can't click on Host elements", e)
 
 except TimeoutException as e:
     print("Host Create from did not show on time", e)

@@ -4,6 +4,7 @@ from selenium.common import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 
 # Initialize WebDriverWait
 def initialize_wait_drive_feed(driver):
@@ -12,8 +13,12 @@ def initialize_wait_drive_feed(driver):
 def scroll_to_element(driver, element):
     driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element)
 
+# Headless set up
+options = Options()
+options.add_argument('--headless')
+
 # Set up the driver
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 wait_driver = initialize_wait_drive_feed(driver)  # Pass the driver to the wait function
 
 driver.get("https://docs.google.com/forms/d/e/1FAIpQLScGuzmmOU0BjpZv9AVblmmOVnBCQz5WqMracmAhdOQkZVHqlg/viewform")

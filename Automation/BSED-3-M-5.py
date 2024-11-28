@@ -76,8 +76,8 @@ try:
 
     # Gender
     try:
-        # Female
-        locator = (By.XPATH, "//div[@id='i58']//div[@class='AB7Lab Id5V1']")
+        # Male
+        locator = (By.XPATH, "//div[@id='i61']//div[@class='AB7Lab Id5V1']")
         gender = wait_driver.until(EC.visibility_of_element_located(locator))
         scroll_to_element(driver, gender)
         gender.click()
@@ -517,14 +517,14 @@ try:
 
     # time.sleep(4)
     # Submit
-    # try:
-    #     locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
-    #     submit = wait_driver.until(EC.visibility_of_element_located(locator))
-    #     submit.click()
-    # except TimeoutException as e:
-    #     print("Host Create from did not show on time", e)
-    # except ElementClickInterceptedException as e:
-    #     print("Can't click on Host elements", e)
+    try:
+        locator = (By.XPATH, "(//span[@class='l4V7wb Fxmcue'])[2]")
+        submit = wait_driver.until(EC.visibility_of_element_located(locator))
+        submit.click()
+    except TimeoutException as e:
+        print("Host Create from did not show on time", e)
+    except ElementClickInterceptedException as e:
+        print("Can't click on Host elements", e)
 
 except TimeoutException as e:
     print("Host Create from did not show on time", e)
